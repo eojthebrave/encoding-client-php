@@ -56,7 +56,6 @@ class Encoding_Response {
    */
   public function assertValidResponse() {
     $response = $this->parseResponse();
-
     if ($this->status_code >= 200 && $this->status_code < 400) {
       if (count($response->errors)) {
         throw new Encoding_Error($response->errors->error);
@@ -80,6 +79,8 @@ class Encoding_Response {
       case 404:
         $message = (is_null($error) ? '404 - Object not found' : $error->description);
         throw new Encoding_NotFoundError($message);
+      case 421:
+        throw new Encoding_RateLimitError('421 - Request over rate limit.');
       case 422:
         throw new Encoding_Error($message);
       case 429:

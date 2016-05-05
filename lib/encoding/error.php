@@ -22,3 +22,8 @@ class Encoding_UnauthorizedError extends Encoding_Error {}
  * Class Encoding_NotFoundError.
  */
 class Encoding_NotFoundError extends Encoding_Error {}
+
+/**
+ * Class Encoding_RateLimitError.
+ */
+class Encoding_RateLimitError extends Encoding_Error {}
